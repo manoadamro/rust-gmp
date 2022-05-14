@@ -845,6 +845,30 @@ impl<'a> From<&'a [u8]> for Mpz {
     }
 }
 
+impl From<i8> for Mpz {
+    fn from(val: i8) -> Self {
+        Self::from(val as u32)
+    }
+}
+
+impl From<u8> for Mpz {
+    fn from(val: u8) -> Self {
+        Self::from(val as u32)
+    }
+}
+
+impl From<i16> for Mpz {
+    fn from(val: i16) -> Self {
+        Self::from(val as u32)
+    }
+}
+
+impl From<u16> for Mpz {
+    fn from(val: u16) -> Self {
+        Self::from(val as u32)
+    }
+}
+
 impl From<u64> for Mpz {
     fn from(other: u64) -> Mpz {
         unsafe {
