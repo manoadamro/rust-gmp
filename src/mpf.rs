@@ -10,7 +10,7 @@ use super::mpz::mp_bitcnt_t;
 use super::mpz::{Mpz, mpz_srcptr};
 use super::mpq::{Mpq, mpq_srcptr};
 use super::sign::Sign;
-use num_traits::{Zero, One};
+use num_traits::{Zero, One, Float};
 
 type mp_exp_t = c_long;
 
@@ -231,6 +231,90 @@ impl Ord for Mpf {
 impl PartialOrd for Mpf {
     fn partial_cmp(&self, other: &Mpf) -> Option<Ordering> {
         Some(self.cmp(other))
+    }
+}
+
+impl From<i8> for Mpf {
+    fn from(val: i8) -> Self {
+        let mut i = Self::new(32);
+        i.set_z(val.into());
+        i
+    }
+}
+
+impl From<u8> for Mpf {
+    fn from(val: u8) -> Self {
+        let mut i = Self::new(32);
+        i.set_z(val.into());
+        i
+    }
+}
+
+impl From<i16> for Mpf {
+    fn from(val: i16) -> Self {
+        let mut i = Self::new(32);
+        i.set_z(val.into());
+        i
+    }
+}
+
+impl From<u16> for Mpf {
+    fn from(val: u16) -> Self {
+        let mut i = Self::new(32);
+        i.set_z(val.into());
+        i
+    }
+}
+
+impl From<i32> for Mpf {
+    fn from(val: i32) -> Self {
+        let mut i = Self::new(32);
+        i.set_z(val.into());
+        i
+    }
+}
+
+impl From<u32> for Mpf {
+    fn from(val: u32) -> Self {
+        let mut i = Self::new(32);
+        i.set_z(val.into());
+        i
+    }
+}
+
+impl From<f32> for Mpf {
+    fn from(val: f32) -> Self {
+        let (mantissa, exponent, sign) = Float::integer_decode(val);
+        let mut mpf = Mpf::new(32);
+        mpf.set_z(&Mpz::from(mantissa));
+        mpf.set_q(&Mpq::from(exponent));
+        mpf
+    }
+}
+
+impl From<i64> for Mpf {
+    fn from(val: i64) -> Self {
+        let mut i = Self::new(32);
+        i.set_z(val.into());
+        i
+    }
+}
+
+impl From<u64> for Mpf {
+    fn from(val: u64) -> Self {
+        let mut i = Self::new(32);
+        i.set_z(val.into());
+        i
+    }
+}
+
+impl From<f64> for Mpf {
+    fn from(val: f32) -> Self {
+        let (mantissa, exponent, sign) = Float::integer_decode(val);
+        let mut mpf = Mpf::new(32);
+        mpf.set_z(&Mpz::from(mantissa));
+        mpf.set_q(&Mpq::from(exponent));
+        mpf
     }
 }
 
