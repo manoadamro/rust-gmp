@@ -382,6 +382,12 @@ impl From<i32> for Mpq {
     }
 }
 
+impl From<i16> for Mpq {
+    fn from(other: i16) -> Mpq {
+        From::<Mpz>::from(From::<i16>::from(other))
+    }
+}
+
 impl From<u64> for Mpq {
     fn from(other: u64) -> Mpq {
         From::<Mpz>::from(From::<u64>::from(other))
@@ -393,6 +399,13 @@ impl From<u32> for Mpq {
         From::<Mpz>::from(From::<u32>::from(other))
     }
 }
+
+impl From<u16> for Mpq {
+    fn from(other: u16) -> Mpq {
+        From::<Mpz>::from(From::<u16>::from(other))
+    }
+}
+
 
 impl FromStr for Mpq {
     type Err = ParseMpqError;
