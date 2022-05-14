@@ -237,7 +237,7 @@ impl PartialOrd for Mpf {
 impl From<i8> for Mpf {
     fn from(val: i8) -> Self {
         let mut i = Self::new(32);
-        i.set_z(val.into());
+        i.set_z(&val.into());
         i
     }
 }
@@ -245,7 +245,7 @@ impl From<i8> for Mpf {
 impl From<u8> for Mpf {
     fn from(val: u8) -> Self {
         let mut i = Self::new(32);
-        i.set_z(val.into());
+        i.set_z(&val.into());
         i
     }
 }
@@ -253,7 +253,7 @@ impl From<u8> for Mpf {
 impl From<i16> for Mpf {
     fn from(val: i16) -> Self {
         let mut i = Self::new(32);
-        i.set_z(val.into());
+        i.set_z(&val.into());
         i
     }
 }
@@ -261,7 +261,7 @@ impl From<i16> for Mpf {
 impl From<u16> for Mpf {
     fn from(val: u16) -> Self {
         let mut i = Self::new(32);
-        i.set_z(val.into());
+        i.set_z(&val.into());
         i
     }
 }
@@ -269,7 +269,7 @@ impl From<u16> for Mpf {
 impl From<i32> for Mpf {
     fn from(val: i32) -> Self {
         let mut i = Self::new(32);
-        i.set_z(val.into());
+        i.set_z(&val.into());
         i
     }
 }
@@ -277,7 +277,7 @@ impl From<i32> for Mpf {
 impl From<u32> for Mpf {
     fn from(val: u32) -> Self {
         let mut i = Self::new(32);
-        i.set_z(val.into());
+        i.set_z(&val.into());
         i
     }
 }
@@ -295,7 +295,7 @@ impl From<f32> for Mpf {
 impl From<i64> for Mpf {
     fn from(val: i64) -> Self {
         let mut i = Self::new(32);
-        i.set_z(val.into());
+        i.set_z(&val.into());
         i
     }
 }
@@ -303,13 +303,13 @@ impl From<i64> for Mpf {
 impl From<u64> for Mpf {
     fn from(val: u64) -> Self {
         let mut i = Self::new(32);
-        i.set_z(val.into());
+        i.set_z(&val.into());
         i
     }
 }
 
 impl From<f64> for Mpf {
-    fn from(val: f32) -> Self {
+    fn from(val: f64) -> Self {
         let (mantissa, exponent, sign) = Float::integer_decode(val);
         let mut mpf = Mpf::new(32);
         mpf.set_z(&Mpz::from(mantissa));
